@@ -18,3 +18,6 @@ function bar(numA, numB, numTarget, cb) {
   let result = cb(numA, numB, numTarget)
   return result !== undefined ? result : `${numTarget} is not a common multiple of ${numA} & ${numB}`
 }
+
+let number
+bar(2, 5, number, foo)

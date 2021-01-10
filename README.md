@@ -28,13 +28,37 @@ function bar(numA, numB, numTarget, cb) {
   let result = cb(numA, numB, numTarget)
   return result !== undefined ? result : `${numTarget} is not a common multiple of ${numA} & ${numB}`
 }
+
+let number
+bar(2, 5, number, foo)
 ```
+
+### 邏輯
+1. 由於沒給 `numTarget` 的範圍，直接假設為正整數
+2. `foo` 函數接收 3 個參數，`numA`, `numB` & `numTarget`，透過 `numTarget % numA` 與 `numTarget % numB` 是否等於 0 來判斷 numTarget 是不是 `numA` 與 `numB` 的倍數
+3. 如果兩者皆符合就回傳 `numTarget is a common multiple of numA & numB`
+4. 若只符合一項就回傳 `numTarget is a multiple of numA` (或 `numB`)
+5. 如果都不符合就回傳 `undefined`
+6. `bar` 函數接收 `numA`, `numB` & `numTarget` 與一個 `cb`
+7. 宣告 `result` 為 `cb(numA, numB, numTarget)` 的回傳值
+8. 判斷 `result` 是否為 `undefined`
+9. 如果為 `undefined`，回傳 `numTarget is not a common multiple of numA & numB`
+10. 如果不是 `undefined`，直接回傳 `result`
+11. 呼叫 `bar(2, 5, number, foo)`
 
 ## Quiz 2.
 >Draw a backend architecture if you have the power to redesign Booking.com with AWS tools.
 
+### 使用的服務
+1. `Route 53` 設定 DNS
+2. `CloudFront` 快取常用資料
+3. `ELB` 將不同請求導向至對應的 EC2 伺服器
+4. `EC2` 建立多個微服務伺服器，接收來自 ELB 的請求，向資料庫存取資料
+5. `RDS` 建立讀寫分離的 MySQL 資料庫 (master & slave)
+6. `S3` 儲存圖片等資料
 
-
+### 結構
+![](https://i.imgur.com/6UqUhR7.png)
 
 ## Quiz 3.
 >Please share your opinion about how do you evaluate is the project suit RPC or RESTful.
