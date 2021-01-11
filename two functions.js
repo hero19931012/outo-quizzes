@@ -1,14 +1,14 @@
 function foo(numA, numB, numTarget) {
-  const isMultipleOfTwo = numTarget % numA === 0
-  const isMultipleOfFive = numTarget % numB === 0
+  const isMultipleOfNumA = numTarget % numA === 0
+  const isMultipleOfNumB = numTarget % numB === 0
 
-  if (isMultipleOfTwo && isMultipleOfFive) {
+  if (isMultipleOfNumA && isMultipleOfNumB) {
     return `${numTarget} is a common multiple of ${numA} & ${numB}`
   }
-  if (isMultipleOfTwo) {
+  if (isMultipleOfNumA) {
     return `${numTarget} is a multiple of ${numA}`
   }
-  if (isMultipleOfFive) {
+  if (isMultipleOfNumB) {
     return `${numTarget} is a multiple of ${numB}`
   }
   return
